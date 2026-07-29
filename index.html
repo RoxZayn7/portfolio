@@ -6,10 +6,13 @@
     <title> My Portfolio </title>
     <link rel="stylesheet" href="style.css">
     <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css">
-    <script src="script.js"> </script>
+    <link rel="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="script.js" defer> </script>
 </head>
 <body>
 <header>
+    <button id="theme-toggle"> 🌙 </button>
     <div class="logo"> My Portfolio </div>
     <nav id="nav-menu">
         <a href="#home"> Home </a>
@@ -25,9 +28,12 @@
 
 <section id="home" class="hero">
     <div class="hero-text">
-        <h1> Hello, I'm <span> Roshana Getchius </span></h1>
-        <p> I am an aspiring Front-End Web Developer passionate about building modern responsive, and user-friendly websites using HTML, CSS, and JavaScript. </p>
+        <h1> Hello, I'm <span class="name"> Roshana Getchius </span></h1>
+        <h2> I'm a <span id="typing"> </span> </h2>
         <a href="#projects" class="btn"> View My Work </a>
+    </div>
+    <div class="hero-buttons">
+        <a href="assets/resume.pdf" download class="resume-btn"> Download Resume </a>
     </div>
 </section>
 
@@ -35,7 +41,7 @@
 
 <section id="about">
     <h2> About Me </h2>
-    <p> I enojoy creating attractive and responsive websites that provide a great user experience. I am continuously learning new web technologies and improving my development skills. </p>
+    <p> I enjoy creating attractive and responsive websites that provide a great user experience. I am continuously learning new web technologies and improving my development skills. </p>
 </section>
 
 <!-- SKILLS -->
@@ -58,12 +64,12 @@
     <h2> Projects </h2>
     <div class="project-container">
         <div class="project-card">
-            <img src="assets/project1.jpt">
+            <img src="assets/fusionfeast.png">
             <h3> Restaurant Website </h3>
             <p> Responsive restaurant portfolio website </p>
         </div>
         <div class="project-card">
-            <img src="assets/project2.jpg">
+            <img src="assets/hero-screenshot-1.40a097b525c2f8c9808e.png">
             <h3> Treact Landing Page </h3>
             <p> Landing page recreated using HTML and CSS </p>
         </div>
@@ -76,6 +82,24 @@
 </section>
 
 <!-- CONTACT -->
+
+<div class="social-icons">
+    <a href="https://github.com/roxzayn7" target="_blank">
+        <i class="fab fa-github"> </i>
+    </a>
+    <a href="https://linkedin.com/in/rosevaral" target="_blank">
+        <i class="fab fa-linkedin"> </i>
+    </a>
+    <a href="https://facebook.com/roshana143" target="_blank">
+        <i class="fab fa-facebook"> </i>
+    </a>
+    <a href="https://instagram.com/_rose1402_" target="_blank">
+        <i class="fab fa-instagram"> </i>
+    </a>
+    <a href="mailto:roshanabaral@gmail.com">
+        <i class="fas fa-envelope"> </i>
+    </a>
+</div>
 
 <section id="contact">
     <h2> Contact Me </h2>
@@ -90,6 +114,13 @@
 <footer>
     <p> (c) 2026 Roshana Baral Getchius | All Rights Reserved </p>
 </footer>
-    
+
+<div id="particles-js"></div>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.1.0/dist/typed.umd.js"> </script>
+<script src="https://unpkg.com/aod@2.3.4/dist/aos.js"> </script>
+<button id="topBtn">
+    <i class="fas fa-arrow-up"> </i>
+</button>
 </body>
 </html>
