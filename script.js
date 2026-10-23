@@ -4,12 +4,6 @@ hamburger.addEventListener("click", () => {
     nav.classList.toggle("active");
 });
 
-AOS.init({
-    duration: 1000,
-    once: true,
-    offset: 120
-});
-
 particlesJS("particles-js", {
     particles: {
         number: {
