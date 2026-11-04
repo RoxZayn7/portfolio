@@ -1,14 +1,35 @@
+// Mobile menu
 const hamburger = document.getElementById("hamburger");
 const nav = document.getElementById("nav-menu");
 hamburger.addEventListener("click", () => {
-    nav.classList.toggle("active");
+    const isOpen = nav.classList.toggle("active");
+    hamburger.setAttribute("aria-expanded", isOpen);
 });
 
-particlesJS("particles-js", {
-    particles: {
-        number: {
-            value: 80
-        },
+// Close the mobile menu when a link is clicked
+document.querySelectorAll("#nav-menu a").forEach((link) => {
+    link.addEventListener("click", () => {
+        nav.classList.remove("active");
+        hamburger.setAttribute("aria-expanded", false);
+    });
+});
+
+// Scroll animations (only runs if the AOS library is loaded)
+if (window.AOS) {
+    AOS.init({
+        duration: 1000,
+        once: true,
+        offset: 120
+    });
+}
+
+// Particle background (only runs if the particles library is loaded)
+if (window.particlesJS && !reduceMotion) {
+    particlesJS("particles-js", {
+        particles: {
+            number: {
+                value: window.innerWidth < 768 ? 40 : 80
+            },
         color: {
             value: "#ff4b2b"
         },
@@ -34,12 +55,15 @@ particlesJS("particles-js", {
         }
     }
 });
+}
 
-new Typed("#typing", {
-    strings:[
-        "Front-End Web Developer",
-        "Web Designer",
-        "HTML & CSS Enthusiast",
+// Typing effect (only runs if the Typed library is loaded)
+if (window.Typed && !reduceMotion) {
+    new Typed("#typing", {
+        strings:[
+            "Front-End Web Developer",
+            "Web Designer",
+            "HTML & CSS Enthusiast",
         "Responsive Website Developer"
     ],
 
@@ -48,31 +72,41 @@ new Typed("#typing", {
     backDelay: 1500,
     loop: true
 });
+}
 
+// Light / Dark 
 const toggle = document.getElementById("theme-toggle");
-toggle.onClick=() => {
-    document.body.classList.toggle("light-mode");
-    if (document.body.classList.contains("light-mode")) {
-        toggle.innerHTML = "☀️";
-    }
-    else {
-        toggle.innerHTML = "🌙";
+function applyTheme(light) {
+    document.body.classList.toggle("light-mode", light);
+    toggle.textContent = light ? "☀️" : "🌙";
+    try {
+        localStorage.setItem("portfolio-theme", light ? "light" : "dark");
+    } catch (e) {
+        // Private mode: just skip remembering the choice
     }
 };
 
+try {
+    applyTheme(localStorage.getItem("portfolio-theme") === "light");
+} catch (e) {
+    applyTheme(false);
+}
+
+toggle.addEventListener("click", () => {
+    const isLight = !document.body.classList.contains("light-mode");
+    applyTheme(isLight);
+});
+
+
+// Back to top button
 const topBtn = document.getElementById("topBtn");
-window.onsecroll = function() {
-    if (document.documentElement.scrollTop>300) {
-        topBtn.style.display = "block";
-    }
-    else {
-        topBtn.style.display = "none"
-    }
-};
+window.addEventListener("scroll", () => {
+    topBtn.style.display = window.scrollY > 300 ? "block" : "none";
+});
 
-topBtn.onClick = function() {
+topBtn.addEventListener("click", () => {
     window.scrollTo({
         top: 0,
         behavior: "smooth"
     });
-};
+});
